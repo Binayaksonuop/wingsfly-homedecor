@@ -1,0 +1,50 @@
+@use '../../styles/variables' as *;
+
+.section-title {
+  margin-bottom: $spacing-lg;
+  
+  &.text-center {
+    text-align: center;
+    
+    .subtitle {
+      justify-content: center;
+      
+      &::before {
+        display: none;
+      }
+    }
+  }
+  
+  &.text-right {
+    text-align: right;
+  }
+  
+  &.text-left {
+    text-align: left;
+  }
+  
+  .subtitle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: $font-primary;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    color: $accent;
+    margin-bottom: $spacing-sm;
+    font-weight: 500;
+    
+    &::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background-color: $accent;
+    }
+  }
+  
+  .title {
+    color: $secondary;
+  }
+}

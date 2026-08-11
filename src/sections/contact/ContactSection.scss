@@ -1,0 +1,360 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.contact-section {
+  background-color: $primary; // Warm ivory
+  padding: 120px 0;
+  
+  @include responsive(mobile) {
+    padding: 80px 0;
+  }
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: flex-start;
+  
+  @include responsive(laptop) {
+    gap: 4rem;
+  }
+  
+  @include responsive(up-to-laptop) {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+// Left Column: Content
+.contact-info-col {
+  padding-right: 2rem;
+  
+  @include responsive(up-to-laptop) {
+    padding-right: 0;
+  }
+}
+
+.section-eyebrow-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-primary;
+  color: $accent;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  
+  .section-number {
+    font-size: 1rem;
+  }
+  
+  .section-divider {
+    color: rgba($secondary, 0.3);
+  }
+  
+  .section-eyebrow-text {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background-color: $accent;
+      margin-left: 1rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+.contact-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  color: $secondary;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.contact-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba($secondary, 0.7);
+  margin-bottom: 3rem;
+  max-width: 90%;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba($secondary, 0.1);
+    color: $accent;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+  
+  &:hover .icon-wrapper {
+    background-color: $accent;
+    color: $white;
+    border-color: $accent;
+  }
+  
+  .item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .item-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba($secondary, 0.5);
+    font-weight: 500;
+  }
+  
+  .item-value {
+    font-family: $font-primary;
+    font-size: 1.05rem;
+    color: $secondary;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+    
+    &[href]:hover {
+      color: $accent;
+    }
+  }
+}
+
+// Right Column: Form
+.contact-form-col {
+  background-color: $white;
+  padding: 4rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+  
+  @include responsive(mobile) {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+.consultation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 2rem;
+  
+  @include responsive(mobile) {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  
+  .half {
+    flex: 1;
+  }
+}
+
+.form-group {
+  position: relative;
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba($secondary, 0.2);
+    padding: 0.75rem 0;
+    font-family: $font-primary;
+    font-size: 1rem;
+    color: $secondary;
+    transition: border-color 0.3s ease;
+    border-radius: 0;
+    
+    &:focus {
+      outline: none;
+      border-bottom-color: $accent;
+    }
+    
+    &.has-error {
+      border-bottom-color: $accent;
+    }
+  }
+  
+  .form-textarea {
+    resize: vertical;
+    min-height: 40px;
+  }
+  
+  .form-select {
+    appearance: none;
+    cursor: pointer;
+    background-color: transparent; // Ensure white bg doesn't hide text
+  }
+  
+  .select-arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-right: 1px solid rgba($secondary, 0.5);
+    border-bottom: 1px solid rgba($secondary, 0.5);
+    transform: translateY(-70%) rotate(45deg);
+    pointer-events: none;
+  }
+  
+  // Floating Label Logic
+  .form-label {
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    font-size: 1rem;
+    color: rgba($secondary, 0.5);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    transform-origin: left top;
+  }
+  
+  .form-input:focus ~ .form-label,
+  .form-input.has-value ~ .form-label,
+  .form-select:focus ~ .form-label,
+  .form-select.has-value ~ .form-label,
+  .form-textarea:focus ~ .form-label,
+  .form-textarea.has-value ~ .form-label {
+    top: -1.25rem;
+    font-size: 0.75rem;
+    color: $secondary;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .form-input:focus ~ .form-label,
+  .form-select:focus ~ .form-label,
+  .form-textarea:focus ~ .form-label {
+    color: $accent;
+  }
+  
+  .error-message {
+    position: absolute;
+    bottom: -1.25rem;
+    left: 0;
+    font-size: 0.75rem;
+    color: $accent;
+  }
+}
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: $secondary;
+  color: $white;
+  font-family: $font-primary;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 1.25rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  align-self: flex-start;
+  
+  @include responsive(mobile) {
+    width: 100%;
+  }
+  
+  .btn-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover:not(:disabled) {
+    background-color: $accent;
+    
+    .btn-icon {
+      transform: translateX(5px);
+    }
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+// Success State
+.success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  min-height: 400px;
+  animation: fadeIn 0.6s ease forwards;
+  
+  .success-icon {
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+  }
+  
+  .success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: $secondary;
+    margin-bottom: 1rem;
+  }
+  
+  .success-message {
+    color: rgba($secondary, 0.7);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 80%;
+  }
+  
+  .reset-btn {
+    background: transparent;
+    border: none;
+    color: $accent;
+    font-family: $font-primary;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: $secondary;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

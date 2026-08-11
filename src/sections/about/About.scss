@@ -1,0 +1,203 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.about-section {
+  background-color: $primary;
+  overflow: hidden;
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xl;
+    align-items: center;
+    
+    @include responsive(laptop) {
+      gap: $spacing-lg;
+    }
+    
+    @include responsive(mobile) {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+  }
+  
+  .about-image-wrapper {
+    position: relative;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    
+    @include responsive(mobile) {
+      padding-left: 1rem;
+      padding-top: 1rem;
+      margin-bottom: $spacing-md;
+    }
+    
+    .image-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 90%;
+      height: 90%;
+      border: 1px solid rgba($secondary, 0.2);
+      z-index: 0;
+    }
+    
+    .about-image {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 700px;
+      object-fit: cover;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      
+      @include responsive(laptop) {
+        height: 500px;
+      }
+      
+      @include responsive(mobile) {
+        height: 400px;
+      }
+    }
+    
+    .experience-badge {
+      position: absolute;
+      bottom: -2rem;
+      right: -2rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba($secondary, 0.1);
+      color: $secondary;
+      padding: 2.5rem 2rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      
+      @include responsive(mobile) {
+        right: 0;
+        bottom: -1rem;
+        padding: 1.5rem;
+      }
+      
+      .years {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        line-height: 1;
+        color: $secondary;
+        margin-bottom: 0.5rem;
+      }
+      
+      .label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 500;
+        color: rgba($secondary, 0.7);
+      }
+    }
+  }
+  
+  .about-content {
+    padding: 0 2rem;
+    
+    @include responsive(mobile) {
+      padding: 0;
+    }
+  }
+  
+  .section-eyebrow {
+    font-family: $font-primary;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+    color: $accent;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+    
+    &::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background-color: $accent;
+    }
+  }
+  
+  .section-heading {
+    font-family: 'Playfair Display', serif; /* Elegant heading */
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: $secondary;
+    font-weight: 400;
+  }
+  
+  .about-text {
+    margin-bottom: 3rem;
+    
+    p {
+      color: rgba($secondary, 0.75);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      @include responsive(mobile) {
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  .process-indicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    
+    .process-step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: $font-primary;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+      color: $secondary;
+      
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: $accent;
+      }
+    }
+    
+    .process-line {
+      flex: 1;
+      height: 1px;
+      background-color: rgba($secondary, 0.2);
+      min-width: 20px;
+    }
+    
+    @include responsive(mobile) {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      
+      .process-line {
+        display: none;
+      }
+      
+      .process-step {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

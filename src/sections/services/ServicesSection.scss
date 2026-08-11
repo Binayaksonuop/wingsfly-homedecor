@@ -1,0 +1,249 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.services-section {
+  background-color: $primary;
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: $spacing-xl;
+    position: relative;
+    
+    @include responsive(laptop) {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-lg;
+    }
+    
+    @include responsive(mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .services-header {
+    margin-bottom: $spacing-lg;
+    
+    @include responsive(mobile) {
+      margin-bottom: $spacing-md;
+    }
+  }
+  
+  .section-eyebrow-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: $font-primary;
+    color: $accent;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    
+    .section-number {
+      font-size: 1rem;
+    }
+    
+    .section-divider {
+      color: rgba($secondary, 0.3);
+    }
+    
+    .section-eyebrow-text {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+  }
+  
+  .section-heading {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: $secondary;
+    font-weight: 400;
+  }
+  
+  .services-support {
+    font-size: 1.1rem;
+    color: rgba($secondary, 0.7);
+    line-height: 1.6;
+    max-width: 90%;
+    font-weight: 300;
+  }
+  
+  .services-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .service-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1.5rem 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    transition: all 0.3s ease;
+    
+    @include responsive(mobile) {
+      padding: 1.2rem 0;
+    }
+    
+    .service-number {
+      font-family: $font-secondary;
+      font-size: 1.2rem;
+      color: rgba($secondary, 0.4);
+      width: 40px;
+      transition: color 0.3s ease;
+      
+      @include responsive(mobile) {
+        width: 30px;
+        font-size: 1rem;
+      }
+    }
+    
+    .service-title {
+      font-family: $font-primary;
+      font-size: 1.5rem;
+      color: $secondary;
+      flex: 1;
+      font-weight: 400;
+      transition: transform 0.3s ease, color 0.3s ease;
+      
+      @include responsive(laptop) {
+        font-size: 1.2rem;
+      }
+      
+      @include responsive(mobile) {
+        font-size: 1.1rem;
+      }
+    }
+    
+    .service-icon {
+      color: $accent;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .service-border {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba($secondary, 0.1);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: $accent;
+        transition: width 0.4s ease;
+      }
+    }
+    
+    // Hover and Active States
+    &:hover, &.active {
+      .service-number {
+        color: $accent;
+      }
+      
+      .service-title {
+        transform: translateX(10px);
+      }
+      
+      .service-icon {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .service-border::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .service-mobile-image-wrapper {
+    display: none;
+    
+    @include responsive(mobile) {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.6s ease;
+      opacity: 0;
+      
+      &.active {
+        max-height: 250px;
+        opacity: 1;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      
+      .service-mobile-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+  }
+  
+  // Image Preview Area
+  .services-preview-container {
+    height: 100%;
+    position: relative;
+    padding-top: $spacing-xl; // Align visually with the list
+    
+    @include responsive(laptop) {
+      padding-top: $spacing-lg;
+    }
+    
+    @include responsive(mobile) {
+      display: none;
+    }
+  }
+  
+  .services-preview-sticky {
+    position: sticky;
+    top: 15vh;
+    height: 70vh;
+    min-height: 500px;
+    width: 100%;
+    overflow: hidden;
+    background-color: $gray-100;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    
+    .preview-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(1.05);
+      transition: opacity 0.6s ease, transform 1.2s ease, visibility 0.6s;
+      
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+      }
+    }
+    
+    .preview-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to top, rgba($secondary, 0.1), transparent);
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@use 'variables' as *;
+
+.container {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  
+  @media (max-width: $bp-tablet) {
+    padding: 0 1.25rem;
+  }
+}
+
+.hide-mobile {
+  @media (max-width: #{$bp-tablet - 1px}) {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @media (min-width: $bp-tablet) {
+    display: none !important;
+  }
+}

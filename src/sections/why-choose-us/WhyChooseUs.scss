@@ -1,0 +1,160 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.why-choose-us {
+  background-color: $gray-100;
+  
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: $spacing-xl;
+    
+    @include responsive(laptop) {
+      gap: $spacing-lg;
+    }
+    
+    @include responsive(mobile) {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+  }
+  
+  .why-header {
+    .why-image-container {
+      margin-top: $spacing-lg;
+      height: 500px; /* Taller and more elegant */
+      overflow: hidden;
+      
+      .why-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  
+  .section-eyebrow {
+    font-family: $font-primary;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+    color: $accent;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+    
+    &::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background-color: $accent;
+    }
+  }
+  
+  .section-heading {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    color: $secondary;
+    font-weight: 400;
+    font-family: 'Playfair Display', serif; /* Elegant heading */
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-content: center;
+    border-top: 1px solid rgba($secondary, 0.1);
+    
+    @include responsive(mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .feature-item {
+    padding: 2.5rem 1.5rem;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba($secondary, 0.1);
+    border-right: 1px solid rgba($secondary, 0.1);
+    
+    // Remove right border for even items in desktop, and all items in mobile
+    &:nth-child(even) {
+      border-right: none;
+    }
+    @include responsive(mobile) {
+      border-right: none;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: $accent;
+      transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    
+    &:hover {
+      background-color: $white;
+      
+      &::before {
+        width: 100%;
+      }
+      
+      .feature-number {
+        color: $accent;
+        transform: translateY(-5px);
+      }
+    }
+    
+    &.active {
+      background-color: $white;
+      
+      &::before {
+        width: 100%;
+      }
+      
+      .feature-number {
+        color: $accent;
+      }
+      
+      .feature-title {
+        color: $secondary;
+      }
+    }
+    
+    .feature-number {
+      font-family: 'Playfair Display', serif; /* Premium serif font */
+      font-size: 2rem;
+      color: rgba($secondary, 0.2);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      transition: all 0.4s ease;
+      display: block;
+    }
+    
+    .feature-title {
+      font-family: $font-primary;
+      font-size: 1.15rem;
+      color: rgba($secondary, 0.8);
+      font-weight: 300;
+      line-height: 1.5;
+      transition: color 0.3s ease;
+    }
+    
+    .feature-line {
+      display: none; // Unused, we use the ::before pseudo-element
+    }
+  }
+}

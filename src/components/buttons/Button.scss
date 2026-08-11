@@ -1,0 +1,102 @@
+@use '../../styles/variables' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-primary;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover::after {
+    transform: translateY(0);
+  }
+
+  &-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  &-md {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  &-lg {
+    padding: 1rem 3rem;
+    font-size: 1rem;
+  }
+
+  &-primary {
+    background-color: $secondary;
+    color: $white;
+    
+    &:hover {
+      color: $white;
+    }
+    
+    &::after {
+      background-color: color-mix(in srgb, $secondary, white 10%);
+    }
+  }
+
+  &-secondary {
+    background-color: $accent;
+    color: $white;
+    
+    &:hover {
+      color: $white;
+    }
+    
+    &::after {
+      background-color: color-mix(in srgb, $accent, black 10%);
+    }
+  }
+
+  &-outline {
+    background-color: transparent;
+    border: 1px solid $secondary;
+    color: $secondary;
+    
+    &::after {
+      background-color: $secondary;
+    }
+    
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &-ghost {
+    background-color: transparent;
+    color: $secondary;
+    padding-left: 0;
+    padding-right: 0;
+    
+    &::after {
+      display: none;
+    }
+    
+    &:hover {
+      color: $accent;
+    }
+  }
+}
