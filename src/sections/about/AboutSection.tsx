@@ -68,7 +68,7 @@ export const AboutSection: React.FC = () => {
             <div className="image-frame"></div>
             <img 
               src={aboutImg} 
-              alt="Wingsfly HomeDecor Interior Design" 
+              alt="Wingsfly HomeDcor Interior Design" 
               className="about-image" 
               ref={imageRef} 
             />
@@ -85,7 +85,7 @@ export const AboutSection: React.FC = () => {
             </h2>
             <div className="about-text">
               <p>
-                Wingsfly HomeDecor is a full-service interior design and execution company dedicated to creating inspiring residential and commercial environments.
+                Wingsfly HomeDcor is a full-service interior design and execution company dedicated to creating inspiring residential and commercial environments.
               </p>
               <p>
                 Our mission is to create elegant, functional, and budget-friendly spaces without compromising quality. We work closely with clients to understand their vision and provide thoughtfully planned and professionally executed interiors.

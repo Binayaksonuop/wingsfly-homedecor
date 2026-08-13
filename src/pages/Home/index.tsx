@@ -152,7 +152,7 @@ export const Home: React.FC = () => {
           <div className="hero-content">
             <p className="hero-eyebrow" ref={eyebrowRef}>
               <span className="eyebrow-line"></span>
-              WINGSFLY HOMEDECOR
+              WINGSFLY HOMEDCOR
             </p>
             <h1 className="hero-heading">
               <span className="heading-line-wrap">

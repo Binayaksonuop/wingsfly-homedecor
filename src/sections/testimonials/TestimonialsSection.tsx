@@ -10,7 +10,7 @@ const testimonials = [
     id: 1,
     name: "Binayak Maharana",
     role: "Homeowner",
-    text: "Wingsfly HomeDecor completely transformed our living space. Their attention to detail and ability to merge luxury with functionality is simply unmatched. Highly recommended!",
+    text: "Wingsfly HomeDcor completely transformed our living space. Their attention to detail and ability to merge luxury with functionality is simply unmatched. Highly recommended!",
     rating: 5
   },
   {

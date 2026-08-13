@@ -12,14 +12,14 @@ export const ProjectDetails: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (project) {
-      document.title = `${project.title} | Wingsfly HomeDecor`;
+      document.title = `${project.title} | Wingsfly HomeDcor`;
     } else {
-      document.title = `Project Not Found | Wingsfly HomeDecor`;
+      document.title = `Project Not Found | Wingsfly HomeDcor`;
     }
     
     // Cleanup title when leaving project details
     return () => {
-      document.title = 'Wingsfly HomeDecor | Interior Design Studio';
+      document.title = 'Wingsfly HomeDcor | Interior Design Studio';
     };
   }, [slug, project]);
 

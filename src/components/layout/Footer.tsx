@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
           </div>
           <h2 className="editorial-heading">Let's Create a Space<br/>That Feels Like You.</h2>
           <div className="editorial-cta">
-            <p className="editorial-subtext">Start your interior design journey with Wingsfly HomeDecor.</p>
+            <p className="editorial-subtext">Start your interior design journey with Wingsfly HomeDcor.</p>
             <Link to={contactLink} className="footer-cta-btn">
               GET FREE CONSULTATION <ArrowRight size={18} className="cta-icon" />
             </Link>
@@ -116,7 +116,7 @@ export const Footer: React.FC = () => {
           
           {/* Brand Column */}
           <div className="footer-col brand-col">
-            <h3 className="brand-name">WINGSFLY HOMEDECOR</h3>
+            <h3 className="brand-name">WINGSFLY HOMEDCOR</h3>
             <p className="brand-tagline">DESIGNING SPACES, DEFINING LIFESTYLES</p>
             <p className="brand-description">
               A full-service interior design and execution company dedicated to creating inspiring residential and commercial environments.
@@ -166,7 +166,7 @@ export const Footer: React.FC = () => {
         
         {/* Legal & Back to Top */}
         <div className="footer-bottom" ref={bottomRef}>
-          <p className="copyright">&copy; {new Date().getFullYear()} Wingsfly HomeDecor. All Rights Reserved.</p>
+          <p className="copyright">&copy; {new Date().getFullYear()} Wingsfly HomeDcor. All Rights Reserved.</p>
           <button onClick={scrollToTop} className="back-to-top" aria-label="Back to top">
             BACK TO TOP <ArrowUp size={16} className="up-icon" />
           </button>
