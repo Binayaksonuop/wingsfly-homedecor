@@ -24,7 +24,7 @@ const testimonials = [
     id: 3,
     name: "Raja & Amit",
     role: "Homeowners",
-    text: "From concept to execution, the process was seamless. The bespoke furniture and lighting designs exceeded our expectations. Truly a premium experience.",
+    text: "From concept to execution, the process was seamless. The custom furniture and lighting designs exceeded our expectations. Truly a premium experience.",
     rating: 5
   }
 ];

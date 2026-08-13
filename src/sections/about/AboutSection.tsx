@@ -71,6 +71,8 @@ export const AboutSection: React.FC = () => {
               alt="Wingsfly HomeDcor Interior Design" 
               className="about-image" 
               ref={imageRef} 
+              loading="eager"
+              fetchPriority="high"
             />
             <div className="experience-badge">
               <span className="years">01</span>
