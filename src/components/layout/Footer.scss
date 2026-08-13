@@ -259,7 +259,12 @@
   letter-spacing: 1.5px;
   cursor: pointer;
   padding: 0.5rem 0;
+  margin-right: 7rem; // Increased margin to prevent overlapping with WhatsApp button
   transition: color 0.3s ease;
+  
+  @include responsive(mobile) {
+    margin-right: 0;
+  }
   
   .up-icon {
     transition: transform 0.3s ease;

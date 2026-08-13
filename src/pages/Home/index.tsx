@@ -6,6 +6,7 @@ import { WhyChooseUsSection } from '../../sections/why-choose-us/WhyChooseUsSect
 import { ServicesSection } from '../../sections/services/ServicesSection';
 import { FeatureCollection } from '../../sections/feature-collection/FeatureCollection';
 import { ProjectsSection } from '../../sections/projects/ProjectsSection';
+import { TestimonialsSection } from '../../sections/testimonials/TestimonialsSection';
 import { ContactSection } from '../../sections/contact/ContactSection';
 import heroImg from '../../assets/images/hero/premium-hero.png';
 import './Home.scss';
@@ -162,7 +163,7 @@ export const Home: React.FC = () => {
               </span>
             </h1>
             <p className="hero-support" ref={supportRef}>
-              Residential & Commercial Interior Design
+              RESIDENTIAL & COMMERCIAL INTERIORS
             </p>
             <div className="hero-cta" ref={ctaRef}>
               <Button to="/#contact" variant="primary" size="lg" className="hero-btn-primary">
@@ -202,6 +203,9 @@ export const Home: React.FC = () => {
       
       {/* Projects Section */}
       <ProjectsSection />
+      
+      {/* Testimonials Section */}
+      <TestimonialsSection />
       
       <ContactSection />
     </div>

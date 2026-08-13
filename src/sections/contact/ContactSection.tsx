@@ -123,21 +123,46 @@ export const ContactSection: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (validateForm()) {
       setIsSubmitting(true);
       
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        setFormData({ name: '', phone: '', email: '', projectType: '', message: '' });
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: 'YOUR_WEB3FORMS_ACCESS_KEY_HERE', // User needs to replace this
+            subject: `New Lead from ${formData.name} - ${formData.projectType}`,
+            from_name: formData.name,
+            ...formData
+          })
+        });
+
+        const result = await response.json();
         
-        // Reset success state after a while
-        setTimeout(() => setIsSuccess(false), 8000);
-      }, 1500);
+        if (result.success) {
+          setIsSubmitting(false);
+          setIsSuccess(true);
+          setFormData({ name: '', phone: '', email: '', projectType: '', message: '' });
+          
+          // Reset success state after a while
+          setTimeout(() => setIsSuccess(false), 8000);
+        } else {
+          console.error('Error submitting form:', result);
+          setIsSubmitting(false);
+          alert('Something went wrong. Please try again later.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        setIsSubmitting(false);
+        alert('Something went wrong. Please check your internet connection and try again.');
+      }
     }
   };
 

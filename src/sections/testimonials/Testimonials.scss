@@ -1,0 +1,106 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.testimonials-section {
+  background-color: $primary;
+  
+  .section-header {
+    margin-bottom: 4rem;
+  }
+  
+  .section-eyebrow-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    
+    &.justify-center {
+      justify-content: center;
+    }
+    
+    .section-number {
+      font-family: $font-secondary;
+      font-size: 1.2rem;
+      color: $accent;
+    }
+    
+    .section-divider {
+      color: rgba($secondary, 0.3);
+    }
+    
+    .section-eyebrow-text {
+      font-family: $font-primary;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: $secondary;
+      font-weight: 500;
+    }
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    
+    @include responsive(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include responsive(mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .testimonial-card {
+    background-color: $white;
+    padding: 2.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba($secondary, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stars {
+      color: $accent;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.25rem;
+    }
+    
+    .testimonial-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: $secondary;
+      margin-bottom: 2rem;
+      font-style: italic;
+      font-weight: 400;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      
+      .author-info {
+        h4 {
+          font-family: $font-primary;
+          color: $secondary;
+          font-size: 1.1rem;
+          margin-bottom: 0.25rem;
+        }
+        
+        p {
+          color: $accent;
+          font-size: 0.85rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}

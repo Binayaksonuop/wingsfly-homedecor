@@ -120,10 +120,10 @@
     gap: $spacing-md;
   }
   
-  // When filtered, default all items to span 6 columns for a balanced look
+  // When filtered, default all items to span 4 columns for a balanced look
   &.filtered {
     .project-card {
-      grid-column: span 6;
+      grid-column: span 4;
       height: 400px;
       
       @include responsive(up-to-laptop) {
@@ -156,13 +156,18 @@
 // Asymmetrical assignments for children if grid is active AND not filtered
 .projects-grid:not(.filtered) {
   .project-card {
-    &:nth-child(2) { grid-column: span 8; }
-    &:nth-child(3) { grid-column: span 6; height: 500px; }
-    &:nth-child(4) { grid-column: span 6; height: 500px; }
+    &:nth-child(1) { grid-column: span 8; height: 500px; }
+    &:nth-child(2) { grid-column: span 4; height: 500px; }
+    &:nth-child(3) { grid-column: span 4; }
+    &:nth-child(4) { grid-column: span 4; }
     &:nth-child(5) { grid-column: span 4; }
-    &:nth-child(6) { grid-column: span 4; }
-    &:nth-child(7) { grid-column: span 4; }
-    &:nth-child(8) { grid-column: span 12; height: 500px; }
+    &:nth-child(6) { grid-column: span 6; height: 450px; }
+    &:nth-child(7) { grid-column: span 6; height: 450px; }
+    &:nth-child(8) { grid-column: span 4; height: 500px; }
+    &:nth-child(9) { grid-column: span 8; height: 500px; }
+    &:nth-child(10) { grid-column: span 4; }
+    &:nth-child(11) { grid-column: span 4; }
+    &:nth-child(12) { grid-column: span 4; }
     
     &.featured {
       grid-column: span 8;

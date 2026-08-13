@@ -5,6 +5,7 @@ import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
 import { Projects } from './pages/Projects';
 import { ProjectDetails } from './pages/ProjectDetails';
+import { WhatsAppButton } from './components/common/WhatsAppButton';
 import './styles/global.scss';
 
 import Lenis from 'lenis';
@@ -64,6 +65,7 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <Footer />
+        <WhatsAppButton />
       </div>
     </Router>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
-import { projectsData } from '../../sections/projects/projectsData';
+import { ArrowLeft, MapPin, Maximize, Clock, CheckCircle } from 'lucide-react';
+import { projectsData } from '../../data/projects';
 import './ProjectDetails.scss';
 
 export const ProjectDetails: React.FC = () => {
@@ -57,6 +57,66 @@ export const ProjectDetails: React.FC = () => {
         
         <div className="detail-hero-image">
           <img src={project.image} alt={project.title} />
+        </div>
+        
+        <div className="detail-content-grid">
+          <div className="detail-main-content">
+            <h2>About The Project</h2>
+            <p className="project-description">{project.description}</p>
+            
+            <div className="project-tags">
+              {project.tags.map(tag => (
+                <span key={tag} className="tag">{tag}</span>
+              ))}
+            </div>
+            
+            {project.gallery && project.gallery.length > 0 && (
+              <div className="project-gallery">
+                <h3>Project Gallery</h3>
+                <div className="gallery-grid">
+                  {project.gallery.map((img, index) => (
+                    <img key={index} src={img} alt={`${project.title} detail ${index + 1}`} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+          
+          <div className="detail-sidebar">
+            <div className="info-card">
+              <h3>Project Details</h3>
+              <ul className="info-list">
+                <li>
+                  <MapPin size={18} />
+                  <div>
+                    <span className="label">Location</span>
+                    <span className="value">{project.location}</span>
+                  </div>
+                </li>
+                <li>
+                  <Maximize size={18} />
+                  <div>
+                    <span className="label">Project Size</span>
+                    <span className="value">{project.projectSize}</span>
+                  </div>
+                </li>
+                <li>
+                  <Clock size={18} />
+                  <div>
+                    <span className="label">Timeline</span>
+                    <span className="value">{project.completionTime}</span>
+                  </div>
+                </li>
+                <li>
+                  <CheckCircle size={18} />
+                  <div>
+                    <span className="label">Status</span>
+                    <span className="value">Completed</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         
         <div className="detail-footer">

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
-import { projectsData, projectCategories } from './projectsData';
+import { projectsData, projectCategories } from '../../data/projects';
 import './ProjectsSection.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -121,7 +121,7 @@ export const ProjectsSection: React.FC = () => {
                     />
                     <div className="project-overlay">
                       <div className="project-overlay-content">
-                        <span className="project-number">{project.number}</span>
+                        <span className="project-number">{(index + 1).toString().padStart(2, '0')}</span>
                         <h3 className="project-title">{project.title}</h3>
                         <p className="project-category">{project.category}</p>
                         
@@ -136,7 +136,7 @@ export const ProjectsSection: React.FC = () => {
                   {/* Mobile/Tablet Info Bar (always visible since hover isn't reliable) */}
                   <div className="project-info-mobile">
                     <div className="info-header">
-                      <span className="mobile-number">{project.number}</span>
+                      <span className="mobile-number">{(index + 1).toString().padStart(2, '0')}</span>
                       <h3 className="mobile-title">{project.title}</h3>
                     </div>
                     <div className="mobile-action">
